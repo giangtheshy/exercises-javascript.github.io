@@ -1,0 +1,435 @@
+let exercises = {
+    areasquare: {
+        title: "Area Square",
+        id: "area-square",
+
+    },
+    learningresult: {
+        title: "Learning Result",
+        id: "learning-result",
+    },
+    findyear: {
+        title: "Find Year Negative",
+        id: "find-year",
+    },
+    finddayofmonth: {
+        title: "Find Day of Month",
+        id: "find-day-of-month",
+    },
+    calculativenumber: {
+        title: "Calculative on Number Chains",
+        id: "calculative-on-number-chains",
+    },
+    printchapter: {
+        title: "Print Nine Chapter",
+        id: "print-chapter",
+    },
+    tostring: {
+        title: "To String Number",
+        id: "convert-string",
+    },
+    bill: {
+        title: "Bill",
+        id: "area-square",
+    },
+    finddayofweek: {
+        title: "Find Day of Week",
+        id: "area-square",
+    },
+}
+
+
+let arrCan = ["Canh", "Tân", "Nhâm", "Quí", "Giáp", "Ất", "Bính", "Đinh", "Mậu", "Kỷ"];
+let arrChi = [{
+        chi: "Tý",
+        image: "./images/ti.jpg"
+    },
+    {
+        chi: "Sửu",
+        image: "./images/suu.jpg"
+    },
+    {
+        chi: "Dần",
+        image: "./images/dan.jpg"
+    },
+    {
+        chi: "Mão",
+        image: "./images/mao.jpg"
+    },
+    {
+        chi: "Thìn",
+        image: "./images/thin.jpg"
+    },
+    {
+        chi: "Tỵ",
+        image: "./images/ty.jpg"
+    },
+    {
+        chi: "Ngọ",
+        image: "./images/ngo.png"
+    },
+    {
+        chi: "Mùi",
+        image: "./images/mui.jpg"
+    },
+    {
+        chi: "Thân",
+        image: "./images/than.jpg"
+    },
+    {
+        chi: "Dậu",
+        image: "./images/dau.png"
+    },
+    {
+        chi: "Tuất",
+        image: "./images/tuat.jpg"
+    },
+    {
+        chi: "Hợi",
+        image: "./images/hoi.jpeg"
+    },
+];
+
+
+
+
+
+
+
+
+
+
+
+
+
+let btnBar = document.getElementById("nav-bar");
+let header = document.querySelector(".header");
+let nav = document.querySelector(".nav");
+let more = document.querySelector(".more");
+let iconContainer = document.querySelector(".icon");
+
+let linksContainer = document.querySelector(".links-container");
+let links = document.querySelector(".links");
+let banner = document.querySelector(".banner");
+
+let heightHeader = header.getBoundingClientRect().height;
+
+function loadTimeCurrent() {
+    let time = new Date();
+    let seconds = time.getSeconds();
+    let minute = time.getMinutes();
+    let hour = time.getHours();
+    let day = time.getDate();
+    let month = time.getMonth();
+    let year = time.getFullYear();
+
+    document.getElementById("seconds").innerHTML = seconds;
+    document.getElementById("minutes").innerHTML = minute;
+    document.getElementById("hours").innerHTML = hour;
+    document.querySelector(".day").innerHTML = `${day}`;
+    document.querySelector(".month").innerHTML = `${month+1}`;
+    document.querySelector(".year").innerHTML = `${year}`;
+
+}
+let myTime = setInterval(loadTimeCurrent, 1000);
+
+window.addEventListener("scroll", () => {
+    let offSetY = window.pageYOffset;
+    if (offSetY > heightHeader) {
+        nav.classList.add("fixed-header");
+        btnBar.classList.add("fixed-btn-bar");
+        banner.style.paddingTop = "35vh";
+
+    } else {
+        if (linksContainer.getBoundingClientRect().height > 0) {
+            return;
+        } else {
+            nav.classList.remove("fixed-header");
+            btnBar.classList.remove("fixed-btn-bar");
+            banner.style.paddingTop = "25vh";
+        }
+
+    }
+})
+
+more.addEventListener("click", () => {
+    if (iconContainer.classList.contains("show-icon")) {
+        iconContainer.classList.remove("show-icon");
+    } else {
+        iconContainer.classList.add("show-icon");
+    }
+})
+
+btnBar.addEventListener("click", () => {
+
+
+    let heightLinksContainer = linksContainer.getBoundingClientRect().height;
+    let heightLinks = links.getBoundingClientRect().height;
+
+    if (heightLinksContainer < 10) {
+        linksContainer.style.height = `${heightLinks}px`;
+        nav.classList.add("fixed-header");
+        btnBar.classList.add("fixed-btn-bar");
+        btnBar.style.transform = "rotate(90deg)";
+        banner.style.paddingTop = "60vh";
+        iconContainer.classList.remove("show-icon");
+    } else {
+
+        linksContainer.style.height = 0;
+        btnBar.style.transform = "rotate(0deg)";
+        banner.style.paddingTop = "25vh";
+    }
+
+})
+
+
+
+
+
+
+
+
+
+let scrollLinks = document.querySelectorAll(".scroll-link");
+scrollLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+        e.preventDefault();
+        let id = e.currentTarget.getAttribute("href").slice(1);
+        let element = document.getElementById(id);
+
+        let position = element.offsetTop - heightHeader;
+
+        window.scrollTo({
+            left: 0,
+            top: position,
+        });
+        linksContainer.style.height = 0;
+        banner.style.paddingTop = "25vh";
+        btnBar.style.transform = "rotate(0deg)";
+
+        let title = e.currentTarget.dataset.id;
+        document.getElementById("exercise-name").innerHTML = exercises[title].title;
+        for (let proper in exercises) {
+            document.getElementById(exercises[proper].id).style.display = "none";
+        }
+        document.getElementById(exercises[title].id).style.display = "block";
+        switch (title) {
+            case "areasquare":
+                document.getElementById("cal-area").addEventListener("click", areaSquare);
+                break;
+            case "learningresult":
+                document.getElementById("xemkq").addEventListener("click", learningResult);
+                break;
+            case "findyear":
+                document.getElementById("convert").addEventListener("click", convertYear);
+                break;
+            case "finddayofmonth":
+                document.getElementById("tinhngay").addEventListener("click", getDayOfMonth);
+                break;
+            case "calculativenumber":
+                document.getElementById("cal-chains").addEventListener("click", calculativeNumberChains);
+                break;
+            case "printchapter":
+                document.getElementById("btn-print").addEventListener("click", printChapter);
+                break;
+            case "tostring":
+                document.getElementById("btn-convert").addEventListener("click", conVertToString);
+
+
+
+        }
+
+
+    })
+})
+
+
+function areaSquare() {
+    let length = document.getElementById("chieudai").value;
+    let width = document.getElementById("chieurong").value;
+    let area = length * width;
+    document.getElementById("dientich").value = area;
+
+}
+
+function learningResult() {
+    let hk1 = parseInt(document.getElementById("diemhk1").value);
+    let hk2 = parseInt(document.getElementById("diemhk2").value);
+    let diemtb = (hk1 + hk2 * 2) / 3;
+    diemtb = diemtb.toFixed(2);
+    document.getElementById("diemtb").value = diemtb;
+    let ketqua = document.getElementById("ketqua");
+    if (diemtb >= 5) {
+        ketqua.value = "Được Lên Lớp";
+    } else {
+        ketqua.value = "Ở Lại Lớp";
+    }
+    let hocluc = document.getElementById("hocluc");
+    if (diemtb >= 8) {
+        hocluc.value = "Giỏi";
+    } else if (diemtb < 8 && diemtb >= 6.5) {
+        hocluc.value = "Khá";
+    } else if (diemtb >= 5 && diemtb < 6.5) {
+        hocluc.value = "Trung Bình";
+    } else {
+        hocluc.value = "Yếu";
+    }
+}
+
+function convertYear() {
+    let amLich = "";
+    let duongLich = parseInt(document.getElementById("duonglich").value);
+    let can = arrCan[duongLich % 10];
+    let chi = arrChi[duongLich % 12].chi;
+    let img = arrChi[duongLich % 12].image;
+    amLich = can + " " + chi;
+    document.getElementById("amlich").value = amLich;
+    document.getElementById("img-chi").setAttribute("src", img);
+}
+
+
+function getDayOfMonth() {
+    let days = (month, year) => new Date(year, month, 0).getDate();
+    let month = parseInt(document.getElementById("nhapthang").value);
+    let year = parseInt(document.getElementById("nhapnam").value);
+    let day = days(month, year);
+    let result = `Tháng ${month} năm ${year} có ${day} ngày .`;
+    document.getElementById("xuatngay").value = result;
+}
+
+function calculativeNumberChains() {
+    let numberStart = parseInt(document.getElementById("numstart").value);
+    let numberEnd = parseInt(document.getElementById("numend").value);
+    let arr = [];
+    for (let i = numberStart; i <= numberEnd; i++) {
+        arr.push(i);
+    }
+
+    let sum = arr.reduce((sum, item) => sum + item);
+    let multi = arr.reduce((multi, item) => multi * item);
+    let sumEven = arr.filter((item) => item % 2 == 0).reduce((sum, item) => sum + item);
+    let sumOdd = arr.filter((item) => item % 2 == 1).reduce((sum, item) => sum + item);
+
+    document.getElementById("sumnumber").value = sum;
+    document.getElementById("multinumber").value = multi;
+    document.getElementById("sumevennum").value = sumEven;
+    document.getElementById("sumoddnum").value = sumOdd;
+}
+
+
+
+function printChapter() {
+    let numberStart = parseInt(document.getElementById("chapter-start").value);
+    let numberEnd = parseInt(document.getElementById("chapter-end").value);
+    let resultChapter = document.getElementById("result-chapter");
+
+    let strResult = "";
+    let count = 0;
+
+    for (let i = numberStart; i <= numberEnd; i++) {
+        count++;
+        strResult += `
+        <ul class="chapter">
+            <li>${i} x 1 = ${i*1}</li>
+            <li>${i} x 2 = ${i*2}</li>
+            <li>${i} x 3 = ${i*3}</li>
+            <li>${i} x 4 = ${i*4}</li>
+            <li>${i} x 5 = ${i*5}</li>
+            <li>${i} x 6 = ${i*6}</li>
+            <li>${i} x 7 = ${i*7}</li>
+            <li>${i} x 8 = ${i*8}</li>
+            <li>${i} x 9 = ${i*9}</li>
+            <li>${i} x 10 = ${i*10}</li>
+        </ul>`
+
+    }
+
+    resultChapter.innerHTML = strResult;
+
+}
+
+
+function conVertToString() {
+    let inputNumber = document.getElementById("input-number-to-convert").value;
+    let number = parseInt(inputNumber);
+    let outputString = document.getElementById("output-string");
+    let numberArr = inputNumber.split("");
+    let arrUnit = ["", "", "Nghìn ", "Triệu ", "Tỉ "];
+    let numStr = ["Không ", "Một ", "Hai ", "Ba ", "Bốn ", "Năm ", "Sáu ", "Bảy ", "Tám ", "Chín "];
+
+    let strTemp = "";
+
+    while (numberArr.length % 3 !== 0) {
+        numberArr.unshift("0");
+    }
+    let arrNested = [];
+    while (numberArr.length > 0) {
+        let arrTemp = numberArr.splice(0, 3);
+        arrNested.push(arrTemp);
+    }
+
+    if (number > 999999999999) {
+        outputString.value = "Input must be less than 999 billion ! Enter Again !!!!";
+        document.getElementById("input-number-to-convert").value = "";
+        document.getElementById("input-number-to-convert").focus();
+    } else {
+        while (arrNested.length > 0) {
+            strTemp += convertStringThreeNumber(arrNested[0]);
+            if (convertStringThreeNumber(arrNested[0]) != "") {
+                strTemp += arrUnit[arrNested.length];
+            }
+            arrNested.shift();
+        }
+        outputString.value = strTemp;
+    }
+
+
+
+    function convertStringThreeNumber(numberArr) {
+        let result = "";
+        let numberTemp = parseInt(numberArr.reduce((value, item) => value + item));
+        if (numberTemp < 20 && numberTemp >= 10) {
+            result += "Mười ";
+            if (numberTemp % 10 > 0) {
+                result += numStr[numberTemp % 10];
+            }
+        } else if (numberTemp % 100 < 20 && numberTemp % 100 >= 10) {
+            if (numberArr.length == 3) {
+                if (numberArr[0] % 10 != 0) {
+                    result += numStr[numberArr[0] % 10] + "Trăm ";
+                }
+                numberArr.shift();
+
+            }
+            if (numberArr.length == 2) {
+                result += "Muời ";
+                numberArr.shift();
+                if (numberArr[0] % 10 != 0) {
+                    result += numStr[numberArr[0] % 10];
+                }
+            }
+
+        } else {
+            if (numberArr.length == 3) {
+                if (numberArr[0] % 10 != 0) {
+                    result += numStr[numberArr[0] % 10] + "Trăm ";
+                }
+                numberArr.shift();
+            }
+            if (numberArr.length == 2) {
+                if (numberArr[0] % 10 != 0) {
+                    result += numStr[numberArr[0] % 10] + "Muơi ";
+                }
+                numberArr.shift();
+            }
+            if (numberArr.length == 1 && numberArr[0] % 10 == 1) {
+                result += "Mốt ";
+            } else if (numberArr.length == 1 && numberArr[0] % 10 != 0) {
+                result += numStr[numberArr[0] % 10];
+            }
+        }
+        return result;
+    }
+
+
+}

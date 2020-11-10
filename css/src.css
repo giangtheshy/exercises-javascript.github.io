@@ -1,0 +1,248 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+h3 {
+    font-family: cursive;
+}
+
+
+/*Area Square*/
+.area-square {
+    width: 100%;
+    height: 100%;
+    
+    margin-top: 10vh;
+    display: none;
+}
+
+.area-square table {
+    margin: auto;
+    background-color: rgb(241, 218, 176);
+}
+
+.area-square h3 {
+    background-color: orange;
+    width: 40vw;
+}
+
+input[name="dientich"] {
+    background-color: rgb(243, 197, 197);
+}
+.area-square table tr:first-child, tr:last-child{
+    text-align: center ;
+}
+
+
+
+
+/*Learning Result*/
+.learning-result {
+    width: 100%;
+    height: 100%;
+    
+    margin-top: 10vh;
+    display: none;
+
+}
+
+.learning-result table {
+    margin: auto;
+    background-color: rgb(238, 124, 168);
+}
+
+.learning-result table tr:first-child {
+    background-color: rgb(218, 51, 51);
+}
+
+.learning-result table tr:first-child, tr:last-child{
+    text-align: center ;
+}
+
+input[name="hocluc"],
+input[name="ketqua"],
+input[name="diemtb"] {
+    background-color: bisque;
+}
+
+
+    /*Find Year */
+
+.find-year{
+    width: 100%;
+    height: 100%;
+    display: none;
+    margin-top: 10vh;
+}
+.find-year table{
+    margin: auto;
+    background-color: aqua;
+    width: 50%;
+    text-align: center;
+}
+.find-year tr:first-child{
+    background-color: rgb(91, 91, 247);
+}
+.find-year input[type="button"]{
+    padding: .5rem;
+    color: red;
+    font-weight: 1000;
+}
+input[name="amlich"]{
+    background-color: rgb(226, 226, 166);
+    color: red;
+    font-weight: bold;
+}
+.find-year img{
+    width: 50vw;
+    height: 50vh;
+}
+
+    /*Find Day of Month*/
+
+.find-day-of-month{
+    width: 100%;
+    height: 100%;
+    margin-top: 10vh;
+    display: none;
+}
+.find-day-of-month table{
+    text-align: center;
+    margin:auto;
+    background-color:rgb(250, 186, 186);
+}
+input[name="thang"],
+input[name="nam"]{
+    width: 4rem;
+}
+.find-day-of-month tr:first-child{
+    background-color: rgb(233, 61, 61);
+}
+input[name="songay"]{
+    width: 100%;
+    background-color:rgb(255, 255, 167);
+    color: red;
+    font-weight: bold;
+}
+
+
+    /*Calculative Number of Chains*/
+
+.calculative-on-number-chains{
+    width: 100%;
+    height: 100%;
+    margin-top:10vh;
+    display: none;
+}
+.calculative-on-number-chains table{
+    background-color:rgb(255, 235, 198);
+    margin:auto;
+    width:50vw;
+}
+.calculative-on-number-chains td:first-child{
+    width:20vw;
+}
+input[name="numstart"],
+input[name="numend"]{
+    width:4rem;
+}
+input[name="sumnumber"],
+input[name="multinumber"],
+input[name="sumevennum"],
+input[name="sumoddnum"]{
+    background-color:rgb(255, 200, 200);
+    width:20rem;
+}
+.limited-num{
+    background-color:white;
+}
+.calculative-on-number-chains tr:first-child{
+    text-align: center;
+    background-color: orange;
+}
+
+
+
+    /*Print Chapter*/
+
+.print-chapter{
+    width: 100%;
+    height: 100%;
+    margin-top: 10vh;
+    text-align: center;
+    display:none;
+}
+.print-chapter table{
+    margin: auto;
+    background-color:rgb(204, 204, 243);
+}
+.print-chapter tr:first-child{
+    text-align: center ;
+    background-color:blue;
+    color: white;
+}
+.cl-red{
+    color:red;
+    font-weight: bold;
+}
+
+.result-chapter{
+    display: grid;
+    grid-template-columns:repeat(5,auto);
+    place-items: center;
+    
+}
+.chapter{
+    list-style-type: none;
+    display: block;
+    border: 1px black double;
+    margin: 1px;
+}
+.chapter li{
+    text-align:left;
+    padding:1px;
+}
+
+
+
+    /*Convert to String */
+
+.convert-string{
+    width: 100%;
+    min-height: 100vh;
+    margin-top: 10vh;
+    text-align: center;
+    display: none;
+}
+.convert-string table{
+    margin: auto;
+    text-align: left;
+    background-color:rgb(143, 181, 250);
+    width: 100%;
+}
+.convert-string td:first-child{
+    width: 15rem;
+    
+}
+input[name="input-number"]{
+    width: 15rem;
+}
+input[name="output-string"]{
+    width: 100%;
+    text-align:left;
+    color: red;
+    font-weight: bold;
+    background-color:rgb(255, 255, 170);
+    cursor:none;
+}
+input[name="btn-convert"]{
+    background-color:rgb(101, 101, 255);
+    margin-left: 2rem;
+    cursor: pointer;
+}
+.convert-string tr:first-child{
+    text-align: center !important;
+    background-color:rgb(64, 64, 255);
+    color:white;
+}

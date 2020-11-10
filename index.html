@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;">
+
+<head>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/src.css">
+    <script src="https://kit.fontawesome.com/776bbe23d6.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Exercises</title>
+</head>
+
+<body>
+    <header>
+        <nav class="nav">
+            <div class="header">
+                <img src="./images/logo-of-giang.png" alt="logo-of-giang">
+                <button id="nav-bar" class="btn-bar"><i class="fa fa-bars"></i></button>
+            </div>
+            <div class="links-container">
+                <ul class="links">
+                    <li><a class="scroll-link" href="#exercises" data-id="areasquare">Area Square</a></li>
+                    <li><a class="scroll-link" href="#exercises" data-id="learningresult">Learning Result</a></li>
+                    <li><a class="scroll-link" href="#exercises" data-id="findyear">Find Year Negative</a></li>
+                    <li><a class="scroll-link" href="#exercises" data-id="finddayofmonth">Find Day of Month</a></li>
+                    <li><a class="scroll-link" href="#exercises" data-id="calculativenumber">Calculative on Number
+                            Chains</a></li>
+                    <li><a class="scroll-link" href="#exercises" data-id="printchapter">Print Nine Chapter</a></li>
+                    <li><a class="scroll-link" href="#exercises" data-id="tostring">To String Number</a></li>
+                    <li><a class="scroll-link" href="#exercises" data-id="bill">Bill</a></li>
+                    <li><a class="scroll-link" href="#exercises" data-id="finddayofweek">Find Day of Week</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="banner">
+            <h1 id="icon">Javascript Exercises</h1>
+            <p>Nguyen Truong Giang - 18520686</p>
+            <a href="#" class="more">More</a>
+            <div class="icon" id="icon">
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-github"></i>
+                <i class="fab fa-linkedin"></i>
+                <i class="fab fa-twitter"></i>
+            </div>
+        </div>
+    </header>
+    <section class="exercises" id="exercises">
+        <h1>Exercise <span class="exercise-name" id="exercise-name">Box</span></h1>
+        <div class="current-exercise" id="current-exercise">
+
+
+
+            <div class="area-square" id="area-square">
+
+                <form action="">
+
+                    <table>
+                        <tr>
+                            <td colspan="2">
+                                <h3>Diện Tích Hình Chữ Nhật</h3>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Chiều Dài :</td>
+                            <td> <input type="text" name="chieudai" id="chieudai"></td>
+                        </tr>
+                        <tr>
+                            <td>Chiều Rộng :</td>
+                            <td> <input type="text" name="chieurong" id="chieurong"></td>
+                        </tr>
+                        <tr>
+                            <td>Diện Tích : </td>
+                            <td> <input type="text" name="dientich" id="dientich" readonly></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input type="button" name="tinh" id="cal-area" value="Tính"></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+
+
+            <div class="learning-result" id="learning-result">
+                <form action="">
+                    <table>
+                        <tr>
+                            <td colspan="2">
+                                <h3>Kết Quả Học Tập</h3>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Điểm HK1 :</td>
+                            <td><input type="text" name="diemhk1" id="diemhk1"></td>
+                        </tr>
+                        <tr>
+                            <td>Điểm HK2 :</td>
+                            <td><input type="text" name="diemhk2" id="diemhk2"></td>
+                        </tr>
+                        <tr>
+                            <td>Điểm TB :</td>
+                            <td><input type="text" name="diemtb" id="diemtb" readonly></td>
+                        </tr>
+                        <tr>
+                            <td>Kết Quả :</td>
+                            <td><input type="text" name="ketqua" id="ketqua" readonly></td>
+                        </tr>
+                        <tr>
+                            <td>Xếp Loại Học Lực :</td>
+                            <td><input type="text" name="hocluc" id="hocluc" readonly></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input type="button" name="btn" id="xemkq" value="Xem Kết Quả"></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+
+            <div class="find-year" id="find-year">
+                <form action="">
+                    <table>
+                        <tr>
+                            <td colspan="3"><h3>Tính Năm Âm Lịch</h3></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Năm Dương Lịch</td>
+                            <td></td>
+                            <td>Năm Âm Lịch</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="duonglich" id="duonglich" ></td>
+                            <td><input type="button" name="convert" id="convert" value="=>"></td>
+                            <td><input type="text" name="amlich" id="amlich" readonly></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="height: 5rem;"><img id="img-chi" src="./images/ti.jpg" alt="ti"></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+
+            <div class="find-day-of-month" id="find-day-of-month">
+                <form>
+                    <table>
+                        <tr>
+                            <td><h3>Tính Ngày Trong Tháng</h3></td>
+                        </tr>
+                        <tr>
+                            <td>Tháng/Năm : <input type="text" name="thang" id="nhapthang" maxlength="2"> / <input type="text" maxlength="4" name="nam" id="nhapnam"></td>
+                        </tr>   
+                        <tr>
+                            <td><input type="button" name="tinhngay" id="tinhngay"  value="Tính Số Ngày"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="songay" id="xuatngay" readonly></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+
+            <div class="calculative-on-number-chains" id="calculative-on-number-chains">
+                <form action="">
+                    <table>
+                        <tr>
+                            <td colspan="2"><h3>Tính Toán Trên Dãy Số</h3></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Giới hạn của dãy số</td>
+                            <td class="limited-num">Số bắt đầu : <input type="text" name="numstart" id="numstart"> Số kết thúc : <input type="text" name="numend" id="numend"></td>
+                        </tr>
+                        <tr>
+                            <td>Kết Quả:</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Tổng các số :</td>
+                            <td><input type="text" name="sumnumber" id="sumnumber" readonly></td>
+                        </tr>
+                        <tr>
+                            <td>Tích các số : </td>
+                            <td><input type="text" name="multinumber" id="multinumber" readonly></td>
+                        </tr>
+                        <tr>
+                            <td>Tổng số chẵn :</td>
+                            <td><input type="text" name="sumevennum" id="sumevennum" readonly></td>
+                        </tr>
+                        <tr>
+                            <td>Tổng số lẻ :</td>
+                            <td><input type="text" name="sumoddnum" id="sumoddnum" readonly></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input type="button" name="cal-Chains" id="cal-chains" value="Tính toán"></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+
+            <div class="print-chapter" id="print-chapter">
+                <form action="">
+                    <table>
+                        <tr>
+                            <td colspan="2"><h3>In Bảng Cửu Chương</h3></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Bắt Đầu Từ : </td>
+                            <td><input type="text" name="chapterstart" id="chapter-start"></td>
+                        </tr>
+                        <tr>
+                            <td>Kết Thúc Từ : </td>
+                            <td><input type="text" name="chapterend" id="chapter-end"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" ><input type="button" name="btnprint" id="btn-print" value="In Bảng Cửu Chương"></td>   
+                            <td></td>
+                        </tr>
+                    </table>
+                </form>
+                <p>Kết quả sau khi nhấn <span class="cl-red">In Bảng Cửu Chương</span></p>
+                <div class="result-chapter" id="result-chapter">
+                    
+                </div>
+            </div>
+
+
+            <div class="convert-string" id="convert-string">
+                <form action="">
+                    <table>
+                        <tr>
+                            <td colspan="2"><h3>Đọc Số</h3></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Nhập Số ( 0 -> 999 Tỷ) </td>
+                            <td><input type="text" name="input-number" id="input-number-to-convert"><input type="button" name="btn-convert" id="btn-convert" value="Đọc Số"></td>
+                        </tr>
+                        <tr>
+                            <td>Bằng Chữ :</td>
+                            <td><input type="text" name="output-string" id="output-string" readonly></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+
+            <div class="bill" id="bill">
+                
+            </div>
+
+
+
+        </div>
+    </section>
+    <footer>
+        <div class="info-left">
+            <p>Nguyen Truong Giang - 18520686</p>
+            <p>University of Information Technology</p>
+            <p>Email : nhockrong98@gmail.com</p>
+        </div>
+        <div class="info-right">
+            <p>Ho Chi Minh city</p>
+            <p><span id="hours">12</span> hour <span id="minutes"> 30</span> minute <span id="seconds">15</span> s</p>
+            <p><span class="day">28</span> /<span class="month">02</span> /<span class="year">2000</span></p>
+        </div>
+    </footer>
+
+
+    <script src="./js/app.js"></script>
+
+</body>
+
+</html>
