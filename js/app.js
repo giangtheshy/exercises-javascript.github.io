@@ -30,7 +30,7 @@ let exercises = {
     },
     bill: {
         title: "Bill",
-        id: "area-square",
+        id: "bill",
     },
     finddayofweek: {
         title: "Find Day of Week",
@@ -234,6 +234,13 @@ scrollLinks.forEach((link) => {
                 break;
             case "tostring":
                 document.getElementById("btn-convert").addEventListener("click", conVertToString);
+                break;
+            case "bill":
+                
+                document.getElementById("btn-bill").addEventListener("click", showBill);
+                notificationBill.style.display = "none"
+                billBox.style.display = "none";
+                break;
 
 
 
@@ -432,4 +439,186 @@ function conVertToString() {
     }
 
 
+}
+
+let menuOriginal = {
+    bonaudau: {
+        title: "Bò Nấu Đậu Hà Lan",
+        price: 100000
+    },
+    chagiotom: {
+        title: "Chả Giò Tôm",
+        price: 150000
+    },
+    chehatsen: {
+        title: "Chè Hạt Sen",
+        price: 100000
+    },
+    comduongchau: {
+        title: "Cơm Dương Châu",
+        price: 200000
+    },
+    goingosen: {
+        title: "Gỏi Ngó Sen",
+        price: 500000
+    },
+    lacadieuhong: {
+        title: "Lẩu Cá Diêu Hồng",
+        price: 300000
+    },
+    lauthailan: {
+        title: "Lẩu Thái Lan",
+        price: 170000
+    },
+    gahapchao: {
+        title: "Gà Hấp Chao",
+        price: 1000000
+    },
+    heosuaquay: {
+        title: "Heo Sữa Quay",
+        price: 600000
+    },
+    trasuatranchau: {
+        title: "Trà Sữa Trân Châu",
+        price: 400000
+    },
+
+}
+
+let menuSelected = {
+
+
+}
+
+
+
+function displayMenu(menu) {
+    let result;
+
+    for (const item in menu) {
+        // console.log(menu)
+        if (menu[item] != undefined) {
+            let i = menu[item].title;
+            console.log(menu)
+            result += `<option class="item-selected" value="${item}">${i}</option>`;
+        } else {
+            continue;
+        }
+
+    }
+    return result;
+}
+
+
+
+
+let funcBtn = {
+    selectone: (item) => {
+        if (menuOriginal[item] != undefined) {
+            menuSelected[item] = menuOriginal[item];
+
+            delete menuOriginal[item];
+            loadMenu();
+        } else {
+            delete menuOriginal[item];
+        }
+
+    },
+    selectall: () => {
+        for (let item in menuOriginal) {
+            menuSelected[item] = menuOriginal[item];
+            delete menuOriginal[item];
+        }
+
+        //loadMenu();
+    },
+    deleteone: (item) => {
+        menuOriginal[item] = menuSelected[item];
+        delete menuSelected[item];
+        //loadMenu();
+    },
+    deleteall: () => {
+        for (let item in menuSelected) {
+            menuOriginal[item] = menuSelected[item];
+            delete menuSelected[item];
+        }
+
+        //loadMenu();
+    }
+}
+
+
+
+
+
+let menuOriginalList = document.getElementById("menu-original");
+let menuSelectedList = document.getElementById("menu-selected");
+let btnSelect = document.querySelectorAll(".btn-selected");
+
+
+function loadMenu() {
+    menuOriginalList.innerHTML = displayMenu(menuOriginal);
+
+    menuSelectedList.innerHTML = displayMenu(menuSelected);
+}
+
+loadMenu();
+
+
+let itemSelected = document.querySelectorAll(".item-selected");
+let itemRemoved = document.querySelectorAll(".item-removed");
+
+btnSelect.forEach((btn) => {
+
+    btn.addEventListener("click", (e) => {
+
+        let id = e.currentTarget.dataset.id;
+        funcBtn[id]();
+        // console.log(itemSelected)
+        itemSelected.forEach((item) => {
+
+            if (item.selected === true) {
+
+                funcBtn[id](item.value);
+                loadMenu()
+
+
+            }
+            loadMenu()
+
+        })
+
+
+
+    })
+
+});
+
+let calculativeMoney = document.querySelector(".calculative-money");
+let printMoney = document.querySelector(".print-money");
+let listBill = document.querySelector(".list-bill");
+let btnOK = document.querySelector(".ok-notifica");
+let notificationBill = document.querySelector(".notification-bill");
+
+calculativeMoney.addEventListener("click", () => {
+    let sum = 0;
+    let bill = "";
+    for (let item in menuSelected) {
+        bill += `${menuSelected[item].title} : ${menuSelected[item].price} <br>`
+        sum += menuSelected[item].price;
+    }
+    listBill.innerHTML = bill;
+
+    printMoney.innerHTML = sum;
+    notificationBill.style.display = "block";
+})
+let billBox = document.getElementById("bill-box");
+let btnBill = document.getElementById("btn-bill");
+function showBill() {
+    
+   
+    btnBill.addEventListener("click", () => {
+        
+        billBox.style.display = "flex";
+    })
 }

@@ -252,7 +252,58 @@
             </div>
 
             <div class="bill" id="bill">
-                
+                <button class="btn-bill" id="btn-bill">BILL</button>
+                <div class="bill-box" id="bill-box">
+                    <div class="bill-header">
+                        <div class="bill-icon">
+                            <img src="./images/bill-icon.png" alt="bill icon">Tính Tiền
+                        </div>
+                        <div class="bill-navigator-bar">
+                            <button class="nav-bar"><i class="fas fa-window-minimize"></i></button>
+                            <button class="nav-bar"><i class="far fa-window-restore"></i></button>
+                            <button class="nav-bar"><i class="far fa-window-close"></i></button>
+                        </div>
+                    </div>
+                    <div class="bill-top">
+                        <div class="bill-left">
+                            <p>Thực Đơn Tiệc</p>
+                            <div class="menu-original">
+                                <select name="menu-original" id="menu-original" multiple size="10">
+                                    
+                                </select>
+                            </div>
+                        </div>
+                        <div class="bill-center">
+                            <button class="btn-selected" data-id="selectone">></button>
+                            <button class="btn-selected space-btn" data-id="selectall">>></button>
+                            <button class="btn-selected" data-id="deleteone"><</button>
+                            <button class="btn-selected" data-id="deleteall"><<</button>
+                        </div>
+                        <div class="bill-right">
+                            <p>Danh Sách Đã Chọn</p>
+                            <div class="menu-selected">
+                                <select name="menu-selected" id="menu-selected" multiple size="10">
+                                    
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bill-bottom">
+                        <button class="calculative-money">Tính Tiền</button>
+                        
+                        <p >Số Tiền Thanh Toán Là : <span class="print-money">...</span> Đồng</p>
+                    </div>
+                </div>
+                <div class="notification-bill">
+                    <div class="header-notifica">
+                        <i class="far fa-window-close"></i>
+                    </div>
+                    <p>Chi Tiết Các Món Ăn :</p>
+                    <div class="list-bill">
+                        
+                    </div>
+                    <button class="ok-notifica">OK</button>
+                </div>
             </div>
 
 
