@@ -372,11 +372,12 @@ input[name="btn-convert"]{
     color:blue;
 }
 .calculative-money{
+    min-width: 4rem;
     border: 2px blue solid;
-    box-shadow: inside 0px 1px 3px blue;
-    cursor: pointer;
-    border-radius: .3rem;
     padding:.3rem;
+    cursor: pointer;
+    box-shadow: inside 0px 1px 3px blue;
+    border-radius: .3rem;
 }
 
 .notification-bill{

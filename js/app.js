@@ -504,7 +504,6 @@ function displayMenu(menu) {
         } else {
             continue;
         }
-
     }
     return result;
 }
