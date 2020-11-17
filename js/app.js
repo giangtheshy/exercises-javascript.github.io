@@ -236,7 +236,7 @@ scrollLinks.forEach((link) => {
                 document.getElementById("btn-convert").addEventListener("click", conVertToString);
                 break;
             case "bill":
-                
+
                 document.getElementById("btn-bill").addEventListener("click", showBill);
                 notificationBill.style.display = "none"
                 billBox.style.display = "none";
@@ -441,112 +441,119 @@ function conVertToString() {
 
 }
 
-let menuOriginal = {
-    bonaudau: {
+// let menuOriginal = {
+//     bonaudau: {
+//         title: "Bò Nấu Đậu Hà Lan",
+//         price: 100000
+//     },
+//     chagiotom: {
+//         title: "Chả Giò Tôm",
+//         price: 150000
+//     },
+//     chehatsen: {
+//         title: "Chè Hạt Sen",
+//         price: 100000
+//     },
+//     comduongchau: {
+//         title: "Cơm Dương Châu",
+//         price: 200000
+//     },
+//     goingosen: {
+//         title: "Gỏi Ngó Sen",
+//         price: 500000
+//     },
+//     lacadieuhong: {
+//         title: "Lẩu Cá Diêu Hồng",
+//         price: 300000
+//     },
+//     lauthailan: {
+//         title: "Lẩu Thái Lan",
+//         price: 170000
+//     },
+//     gahapchao: {
+//         title: "Gà Hấp Chao",
+//         price: 1000000
+//     },
+//     heosuaquay: {
+//         title: "Heo Sữa Quay",
+//         price: 600000
+//     },
+//     trasuatranchau: {
+//         title: "Trà Sữa Trân Châu",
+//         price: 400000
+//     },
+
+// }
+let menuOriginal = [{
+        id: 1,
         title: "Bò Nấu Đậu Hà Lan",
         price: 100000
     },
-    chagiotom: {
+    {
+        id: 2,
         title: "Chả Giò Tôm",
         price: 150000
     },
-    chehatsen: {
+    {
+        id: 3,
         title: "Chè Hạt Sen",
         price: 100000
     },
-    comduongchau: {
+    {
+        id: 4,
         title: "Cơm Dương Châu",
         price: 200000
     },
-    goingosen: {
+    {
+        id: 5,
         title: "Gỏi Ngó Sen",
         price: 500000
     },
-    lacadieuhong: {
+    {
+        id: 6,
         title: "Lẩu Cá Diêu Hồng",
         price: 300000
     },
-    lauthailan: {
+    {
+        id: 7,
         title: "Lẩu Thái Lan",
         price: 170000
     },
-    gahapchao: {
+    {
+        id: 8,
         title: "Gà Hấp Chao",
         price: 1000000
     },
-    heosuaquay: {
+    {
+        id: 9,
         title: "Heo Sữa Quay",
         price: 600000
     },
-    trasuatranchau: {
+    {
+        id: 10,
         title: "Trà Sữa Trân Châu",
         price: 400000
     },
 
+]
+
+
+let menuSelected = [
+
+
+]
+
+function displayMenu(menu,list) {
+
+    menu.map(item => {
+        let element = document.createElement("option");
+        element.setAttribute("data-id", item.id);
+        element.classList.add("item-selected");
+        element.textContent = item.title;
+        list.appendChild(element);
+    })
+    
 }
-
-let menuSelected = {
-
-
-}
-
-
-
-function displayMenu(menu) {
-    let result;
-
-    for (const item in menu) {
-        // console.log(menu)
-        if (menu[item] != undefined) {
-            let i = menu[item].title;
-            console.log(menu)
-            result += `<option class="item-selected" value="${item}">${i}</option>`;
-        } else {
-            continue;
-        }
-    }
-    return result;
-}
-
-
-
-
-let funcBtn = {
-    selectone: (item) => {
-        if (menuOriginal[item] != undefined) {
-            menuSelected[item] = menuOriginal[item];
-
-            delete menuOriginal[item];
-            loadMenu();
-        } else {
-            delete menuOriginal[item];
-        }
-
-    },
-    selectall: () => {
-        for (let item in menuOriginal) {
-            menuSelected[item] = menuOriginal[item];
-            delete menuOriginal[item];
-        }
-
-        //loadMenu();
-    },
-    deleteone: (item) => {
-        menuOriginal[item] = menuSelected[item];
-        delete menuSelected[item];
-        //loadMenu();
-    },
-    deleteall: () => {
-        for (let item in menuSelected) {
-            menuOriginal[item] = menuSelected[item];
-            delete menuSelected[item];
-        }
-
-        //loadMenu();
-    }
-}
-
-
 
 
 
@@ -555,43 +562,140 @@ let menuSelectedList = document.getElementById("menu-selected");
 let btnSelect = document.querySelectorAll(".btn-selected");
 
 
-function loadMenu() {
-    menuOriginalList.innerHTML = displayMenu(menuOriginal);
-
-    menuSelectedList.innerHTML = displayMenu(menuSelected);
-}
-
-loadMenu();
-
-
 let itemSelected = document.querySelectorAll(".item-selected");
-let itemRemoved = document.querySelectorAll(".item-removed");
+
 
 btnSelect.forEach((btn) => {
 
     btn.addEventListener("click", (e) => {
 
         let id = e.currentTarget.dataset.id;
-        funcBtn[id]();
-        // console.log(itemSelected)
-        itemSelected.forEach((item) => {
-
-            if (item.selected === true) {
-
-                funcBtn[id](item.value);
-                loadMenu()
-
-
-            }
-            loadMenu()
-
-        })
-
-
+        checkBtn(id);
+        
 
     })
 
 });
+function setUpDefault(menuElement) {
+    while(menuElement.length !== 0) {
+        menuElement.removeChild(menuElement.childNodes[0]);
+    }
+}
+function loadMenu() {
+    setUpDefault(menuOriginalList);
+    displayMenu(menuOriginal,menuOriginalList);
+    setUpDefault(menuSelectedList);
+    displayMenu(menuSelected,menuSelectedList);
+}
+
+function checkBtn(id){
+    if (id ==="selectone"){
+        let arr = [...menuOriginalList.children]
+        let tempSelected= arr.map(item => {
+            
+            if (item.selected === true){
+                return item;
+            }
+        })
+        tempSelected = tempSelected.filter(item=> item);
+        if (menuSelected.length >0){
+            let filterTemp = menuOriginal.filter(item => {
+                let flag=false;
+                tempSelected.forEach(i => {
+                    if (i.dataset.id == item.id) {
+                       flag= true;
+                    }
+                })
+                return flag;
+            })
+            filterTemp.map(item=>{
+                menuSelected.push(item);
+            })
+        }else{
+            menuSelected = menuOriginal.filter(item => {
+                let flag=false;
+                tempSelected.forEach(i => {
+                    if (i.dataset.id == item.id) {
+                       flag= true;
+                    }
+                })
+                return flag;
+            })
+        }
+        
+        menuOriginal= menuOriginal.filter(item =>{
+            let flag=true;
+            menuSelected.forEach(i => {
+                if (i.id == item.id) {
+                   flag= false;
+                }
+            })
+            return flag;
+        })
+        loadMenu();
+    }else if(id ==="selectall"){
+        menuOriginal.map(item=>{
+            menuSelected.push(item);
+
+        })
+        menuOriginal=[];
+        loadMenu();
+    }else if(id ==="deleteone"){
+        let arr = [...menuSelectedList.children]
+        let tempSelected= arr.map(item => {
+            
+            if (item.selected === true){
+                return item;
+            }
+        })
+        tempSelected = tempSelected.filter(item=> item);
+        if (menuOriginal.length >0){
+            let filterTemp = menuSelected.filter(item => {
+                let flag=false;
+                tempSelected.forEach(i => {
+                    if (i.dataset.id == item.id) {
+                       flag= true;
+                    }
+                })
+                return flag;
+            })
+            filterTemp.map(item=>{
+                menuOriginal.push(item);
+            })
+        }else{
+            menuOriginal = menuSelected.filter(item => {
+                let flag=false;
+                tempSelected.forEach(i => {
+                    if (i.dataset.id == item.id) {
+                       flag= true;
+                    }
+                })
+                return flag;
+            })
+        }
+        
+        menuSelected= menuSelected.filter(item =>{
+            let flag=true;
+            menuOriginal.forEach(i => {
+                if (i.id == item.id) {
+                   flag= false;
+                }
+            })
+            return flag;
+        })
+        
+        loadMenu();
+    }else{
+        menuSelected.map(item=>{
+            menuOriginal.push(item);
+
+        })
+        menuSelected=[];
+        loadMenu();
+    }
+}
+
+
 
 let calculativeMoney = document.querySelector(".calculative-money");
 let printMoney = document.querySelector(".print-money");
@@ -613,11 +717,12 @@ calculativeMoney.addEventListener("click", () => {
 })
 let billBox = document.getElementById("bill-box");
 let btnBill = document.getElementById("btn-bill");
+
 function showBill() {
-    
-   
+
+
     btnBill.addEventListener("click", () => {
-        
+        loadMenu();
         billBox.style.display = "flex";
     })
 }
